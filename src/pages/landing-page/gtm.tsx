@@ -41,7 +41,7 @@ export const GtmSeo = ({ info }: { info: LandingPageType }) => {
   return (
     <Helmet>
       <title>
-        {info?.name} | {siteName}
+        {info?.name} - {siteName}
       </title>
       <meta
         name="description"

@@ -33,6 +33,8 @@ export const LandingPage = () => {
     removeLocalStorage("token");
     removeLocalStorage("user_id");
     removeLocalStorage("guest_user_id");
+    removeLocalStorage("selected_shipping_method");
+    removeLocalStorage("selected_payment_method");
   }, []);
 
   if (isLoading) return <LandingSkeleton />;
@@ -45,12 +47,12 @@ export const LandingPage = () => {
   return (
     <>
       <GtmSeo info={info} />
-      <section className="min-h-screen overflow-hidden">
+      <main className="min-h-screen overflow-hidden">
         <HeaderSection />
-        <section className="max-w-[1530px] mx-auto px-4 sm:px-0 space-y-10 md:space-y-16">
+        <section className="container mx-auto px-4 sm:px-0 space-y-10 md:space-y-16">
           <div>
             <Title>{info?.title}</Title>
-            {info?.sub_title && <SubTitle>{info?.sub_title}</SubTitle>}
+            <SubTitle>{info?.sub_title}</SubTitle>
           </div>
 
           <VideoSection info={info} />
@@ -76,7 +78,7 @@ export const LandingPage = () => {
         <FooterLanding />
 
         <ScrollToTop />
-      </section>
+      </main>
     </>
   );
 };

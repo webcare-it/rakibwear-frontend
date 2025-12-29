@@ -1,5 +1,6 @@
 import { HeroSection } from "./hero";
 import { BaseLayout } from "@/components/layout/base-layout";
+import { CategoriesSection } from "./categories";
 import { BestSellerSection } from "./best";
 import { FeaturedProductsSection } from "./feature";
 import {
@@ -26,6 +27,7 @@ export const HomePage = () => {
   const orderedSections = useMemo(() => {
     const components = {
       hero: <HeroSection />,
+      categories: <CategoriesSection />,
       trust_badge: <TrustBadgeSection />,
       todays_deal: (
         <TodaysDealSection
@@ -59,7 +61,8 @@ export const HomePage = () => {
 
     return [
       { key: "hero", component: components.hero },
-
+      { key: "categories", component: components.categories },
+      { key: "trust_badge", component: components.trust_badge },
       { key: "todays_deal", component: components.todays_deal },
       {
         key: "promotional_section_one",
@@ -89,12 +92,11 @@ export const HomePage = () => {
         key: "promotional_section_three",
         component: components.promotional_section_three,
       },
-      { key: "trust_badge", component: components.trust_badge },
     ];
   }, [homeSections, sectionLoading]);
 
   return (
-    <BaseLayout>
+    <BaseLayout isShowNewsletterSection={true}>
       <section className="flex flex-col gap-10 md:gap-20">
         {orderedSections.map((section) => (
           <React.Fragment key={section.key}>{section.component}</React.Fragment>
